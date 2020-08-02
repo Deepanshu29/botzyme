@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 offset-1" id="seperator" data-aos="zoom-in">
+      <hr class="ml-1"/>
+      <h1 class="text-white">BOTZYME ENQUIRY</h1>
+      <p class="text-white">If you want to know anything more about us or have any kind of query/FAQ we would like to solve them...</p>
+    </div>
+    <div class="col-md-4" id="form">
+      <form #Enquiry="ngForm" class="form-group m-2" data-aos="fade-in" [formGroup]="EnquiryForm" (ngSubmit)="onSubmit(Enquiry)">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="name">Name : </label>
+            <input [class.is-invalid]="EnquiryForm.get('name').invalid && EnquiryForm.get('name').touched" type="text" id="name" class="form-control" formControlName="name" required>
+            <!-- <small [class.d-none]="EnquiryForm.get('name').valid || EnquiryForm.get('name').untouched" class="text-danger">Username is Required</small> -->
+            <div *ngIf="EnquiryForm.get('name').invalid && EnquiryForm.get('name').touched">
+              <small *ngIf="EnquiryForm.get('name').errors?.required" class="text-danger font-weight-bold">Name is Required</small>
+              <small *ngIf="EnquiryForm.get('name').errors?.minlength" class="text-danger font-weight-bold">Must be of atleast 3 letters</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="phoneNo">Contact Number : </label>
+            <input [class.is-invalid]="EnquiryForm.get('phoneNo').invalid && EnquiryForm.get('phoneNo').touched" type="tel" id="phoneNo" class="form-control" formControlName="phoneNo" required>
+            <div *ngIf="EnquiryForm.get('phoneNo').invalid && EnquiryForm.get('phoneNo').touched">
+              <small *ngIf="EnquiryForm.get('phoneNo').errors?.required" class="text-danger font-weight-bold">Phone No. is Required</small>
+              <small *ngIf="EnquiryForm.get('phoneNo').errors?.minlength || EnquiryForm.get('phoneNo').errors?.maxlength" class="text-danger font-weight-bold">Must be of 10-letters</small>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="email">Email Address : </label>
+          <input [class.is-invalid]="EnquiryForm.get('email').invalid && EnquiryForm.get('email').touched" type="email" id="email" class="form-control" formControlName="email" required>
+          <div *ngIf="EnquiryForm.get('email').invalid && EnquiryForm.get('email').touched">
+            <small *ngIf="EnquiryForm.get('email').errors?.required" class="text-danger font-weight-bold">Email is Required</small>
+            <small *ngIf="EnquiryForm.get('email').errors?.email" class="text-danger font-weight-bold">Must be Email Type</small>
+          </div>
+        </div>
+        <div>
+          <label for="Enquiry">Enquiry : </label><span class="text-dark float-right mt-1">{{ length || 0 }}/50</span>
+          <textarea [(ngModel)]="enquiry" (input)="autoGrow($event)" [class.is-invalid]="EnquiryForm.get('Enquiry').invalid && EnquiryForm.get('Enquiry').touched" id="Enquiry" formControlName="Enquiry" class="form-control" minlength="50" required></textarea>
+          <div *ngIf="EnquiryForm.get('Enquiry').invalid && EnquiryForm.get('Enquiry').touched">
+            <small *ngIf="EnquiryForm.get('Enquiry').errors?.required" class="text-danger font-weight-bold">Enter your Query First</small>
+            <small *ngIf="EnquiryForm.get('Enquiry').errors?.minlength" class="text-danger font-weight-bold">Must be of 50 words</small>
+          </div>
+        </div><br>
+        <div class="text-center">
+          <button type="submit" [class.disabled]="Enquiry.form.invalid" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

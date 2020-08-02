@@ -1,0 +1,22 @@
+.row{
+   background-color: #f7a6b3;
+}
+hr{
+  border: #4e00ca 1px solid;
+  max-width: 3rem;
+}
+#seperator{
+  border-right: #4e00ca 2px solid;
+  margin: auto;
+}
+#form{
+  margin: auto;
+}
+label{
+  font-size: large;
+  font-weight: bold;
+}
+button{
+  width: 100px;
+  font-weight: bold;
+}

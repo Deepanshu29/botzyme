@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+
+body{
+  background: url(./assets/BackGround.jpg) no-repeat center center fixed;
+  backdrop-filter: blur(8px);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
